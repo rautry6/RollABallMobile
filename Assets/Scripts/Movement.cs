@@ -6,14 +6,22 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 1f;
-    [SerializeField] private float maxSpeed = 6f;
+ private float moveSpeed = 3f;
+   private float maxSpeed = 1f;
+
+    [SerializeField] private GameObject[] movementUis;
+
+    [SerializeField] private GameObject optionsUI;
     PlayerMovement playerMovment;
     InputAction move;
+    InputAction touchMovement;
 
     Rigidbody rb;
 
     Vector3 moveDirection;
+
+    bool moveOption3Selected = false;
+
     private void Awake()
     {
         playerMovment = new PlayerMovement();
@@ -23,11 +31,13 @@ public class Movement : MonoBehaviour
     private void OnEnable()
     {
         move = playerMovment.Player.Move;
+        touchMovement = playerMovment.Touch.Move;
         move.Enable();
     }
 
     private void OnDisable()
     {
+        touchMovement.Disable();
         move.Disable();
     }
 
@@ -40,7 +50,15 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         moveDirection = move.ReadValue<Vector3>();
+
+        if (moveOption3Selected)
+        {
+            moveDirection = touchMovement.ReadValue<Vector3>();
+        }
+        else
+        {
+            moveDirection = move.ReadValue<Vector3>();
+        }
     }
 
     private void FixedUpdate()
@@ -49,4 +67,47 @@ public class Movement : MonoBehaviour
         rb.AddForce(new Vector3(moveDirection.x, 0, moveDirection.y) * moveSpeed * Time.deltaTime, ForceMode.Impulse);
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
     }
+
+    public void Movement1()
+    {
+        movementUis[0].SetActive(true);
+        movementUis[1].SetActive(false);
+        movementUis[2].SetActive(false);
+
+        touchMovement.Disable();
+        move.Enable();
+        moveOption3Selected = false;
+
+        moveSpeed = 3;
+        maxSpeed = 1;
+    }
+
+    public void Movement2()
+    {
+        movementUis[0].SetActive(false);
+        movementUis[1].SetActive(true);
+        movementUis[2].SetActive(false);
+
+        touchMovement.Disable();
+        move.Enable();
+        moveOption3Selected = false;
+
+        moveSpeed = 3;
+        maxSpeed = 1;
+    }
+
+    public void Movement3()
+    {
+        movementUis[0].SetActive(false);
+        movementUis[1].SetActive(false);
+        movementUis[2].SetActive(true);
+
+        touchMovement.Enable();
+        move.Disable();
+        moveOption3Selected = true;
+
+        moveSpeed = 1;
+        maxSpeed = 1;
+    }
+
 }

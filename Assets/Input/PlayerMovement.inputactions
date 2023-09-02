@@ -136,10 +136,82 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "Touch",
+            "id": "413302f5-959c-4ea4-a8ba-71271732f83c",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "bd8cad53-11b3-4436-a65c-c7f2eb29c722",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "Controls",
+                    "id": "540b913c-4bc8-498f-84e6-02c0aed84347",
+                    "path": "3DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "66bca865-9d9c-4866-a4e9-563008756f3f",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "fc8214c3-fc1d-4e1a-b073-bb9453a703af",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "a4bf0a2a-43d3-49e1-a0f6-2e87fb7e6098",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "8071ea00-a1ac-4c58-94f1-604088ffc034",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "Up",
-                    "id": "dff2d8fe-e3ba-41db-aa5c-a9f7a332ef11",
+                    "id": "d87928ab-6920-4345-b9d1-7870dd0e2b91",
                     "path": "<Touchscreen>/delta/up",
                     "interactions": "",
                     "processors": "",
@@ -150,7 +222,7 @@
                 },
                 {
                     "name": "Down",
-                    "id": "eeebee7b-9584-4ccc-8803-2cb27f96fdfd",
+                    "id": "b1dd6eda-0378-41ea-bb1d-acac9c5842ee",
                     "path": "<Touchscreen>/primaryTouch/delta/down",
                     "interactions": "",
                     "processors": "",
@@ -161,7 +233,7 @@
                 },
                 {
                     "name": "Left",
-                    "id": "b5280601-cf6d-427b-93ed-20914fe38727",
+                    "id": "6900a100-31ce-4ad1-883e-60b1412d7128",
                     "path": "<Touchscreen>/primaryTouch/delta/left",
                     "interactions": "",
                     "processors": "",
@@ -172,7 +244,7 @@
                 },
                 {
                     "name": "Right",
-                    "id": "48d9b8a1-4bb9-4be1-8eab-e952840cd55f",
+                    "id": "b7287f01-bcbe-402f-a327-d490fe67cf76",
                     "path": "<Touchscreen>/primaryTouch/delta/right",
                     "interactions": "",
                     "processors": "",
