@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Movement : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Movement : MonoBehaviour
    private float maxSpeed = 1f;
 
     [SerializeField] private GameObject[] movementUis;
+    [SerializeField] private GameObject[] buttons;
+    [SerializeField] private GameObject gameOverUi;
 
     [SerializeField] private GameObject optionsUI;
     PlayerMovement playerMovment;
@@ -110,4 +113,39 @@ public class Movement : MonoBehaviour
         maxSpeed = 1;
     }
 
+    void DisableUI()
+    {
+        movementUis[0].SetActive(false);
+        movementUis[1].SetActive(false);
+        movementUis[2].SetActive(false);
+
+        foreach(GameObject button in buttons)
+        {
+            button.SetActive(false);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Goal"))
+        {
+            GameOver();
+        }
+    }
+
+    void GameOver()
+    {
+        //Disable inputs
+        touchMovement.Disable();
+        move.Disable();
+
+        gameOverUi.SetActive(true);
+        DisableUI();
+
+    }
+
+    public void Replay()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
