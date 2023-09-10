@@ -24,18 +24,19 @@ public class Movement : MonoBehaviour
     Vector3 moveDirection;
 
     bool moveOption3Selected = false;
+    AudioSource victory;
 
     private void Awake()
     {
         playerMovment = new PlayerMovement();
         rb = GetComponent<Rigidbody>();
+        victory = GetComponent<AudioSource>();
     }
 
     private void OnEnable()
     {
         move = playerMovment.Player.Move;
         touchMovement = playerMovment.Touch.Move;
-        move.Enable();
     }
 
     private void OnDisable()
@@ -138,6 +139,8 @@ public class Movement : MonoBehaviour
         //Disable inputs
         touchMovement.Disable();
         move.Disable();
+
+        victory.Play();
 
         gameOverUi.SetActive(true);
         DisableUI();
